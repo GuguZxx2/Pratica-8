@@ -1,0 +1,29 @@
+Questão 4:
+
+import javax.swing.*;
+import java.awt.*;
+
+public class HierarquiaPessoas extends JFrame {
+
+    public HierarquiaPessoas() {
+        setTitle("Hierarquia de Pessoas");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel label = new JLabel("Hierarquia de Pessoas");
+        JButton btnPessoaFisica = new JButton("Pessoa Física");
+        JButton btnDesempregado = new JButton("Desempregado");
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(0, 1)); 
+        panel.add(label);
+        panel.add(btnPessoaFisica);
+        panel.add(btnDesempregado);
+        add(panel);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new HierarquiaPessoas();
+    }
+}

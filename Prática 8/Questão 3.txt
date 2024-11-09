@@ -1,0 +1,43 @@
+Questão 3:
+
+
+public class Empregado {
+    private String nome;
+    private String cpf;
+
+}
+public class Mensalista extends Empregado {
+    private double salarioBase;
+
+}
+
+public class Comissionado extends Empregado {
+    private double valorVenda;
+    private double taxaComissao;
+
+}
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InterfaceEmpregados extends JFrame {
+    private JComboBox<String> comboTipo;
+    private JTextField txtNome, txtCpf, txtSalario, txtValorVenda, txtTaxaComissao, ...;
+    private JTable tabelaEmpregados;
+    private List<Empregado> empregados = new ArrayList<>();
+
+    public InterfaceEmpregados() {
+
+        comboTipo.addItem("Mensalista");
+        comboTipo.addItem("Comissionado");
+
+        String[] colunas = {"Nome", "CPF", "Salário", ...};
+    }
+
+    private void adicionarEmpregado() {
+
+    public static void main(String[] args) {
+        new InterfaceEmpregados().setVisible(true);
+    }
+}

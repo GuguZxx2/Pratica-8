@@ -1,0 +1,83 @@
+Questão 5:
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Calculadora extends JFrame implements ActionListener {
+
+    private JTextField display;
+    private String operador;
+    private int primeiroNumero;
+
+    public Calculadora() {
+        setTitle("Calculadora");
+        setSize(250, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        display = new JTextField("0");
+        display.setHorizontalAlignment(JTextField.RIGHT);
+        add(display, BorderLayout.NORTH);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4, 4));
+
+        String[] botoes = {"7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", "C", "=", "+"};
+        for (String botao : botoes) {
+            JButton button = new JButton(botao);
+            button.addActionListener(this);
+            panel.add(button);
+        }
+
+        add(panel, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String comando = e.getActionCommand();
+
+        if (Character.isDigit(comando.charAt(0))) {
+            display.setText(display.getText() + comando);
+        } else {
+           switch (comando) {
+       case "=":
+       int segundoNumero = Integer.parseInt(display.getText());
+       int resultado = 0;
+      switch (operador) {
+      case "+":
+      resultado = primeiroNumero + segundoNumero;
+      break;
+      case "-":
+     resultado = primeiroNumero - segundoNumero;
+      break;
+      case "*":
+      resultado = primeiroNumero * segundoNumero;
+     . break;
+      case "/":
+     if (segundoNumero != 0) {
+      resultado = primeiroNumero / segundoNumero;
+      } else {
+     display.setText("Erro: Divisão por zero");
+     return;
+    }
+     break;
+    }
+    display.setText(String.valueOf(resultado));
+     break;
+   case "C":
+     display.setText("0");
+      break;
+   default:
+       operador = comando;
+          primeiroNumero = Integer.parseInt(display.getText());
+           display.setText("");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        new Calculadora();
+    }
+}

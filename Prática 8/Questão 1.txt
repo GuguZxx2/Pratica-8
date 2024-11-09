@@ -1,0 +1,55 @@
+Questão 1:
+
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class InterfaceSimples {
+    public static void main(String[] args) {
+        
+        JFrame janela = new JFrame("Minha Interface");
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel labelTexto = new JLabel("Texto:");
+        JTextField campoTexto = new JTextField(20);
+        JButton botaoMostrar = new JButton("Mostrar");
+        JButton botaoLimpar = new JButton("Limpar");
+        JButton botaoSair = new JButton("Sair");
+
+        JPanel painel = new JPanel();
+        painel.add(labelTexto);
+        painel.add(campoTexto);
+        painel.add(botaoMostrar);
+        painel.add(botaoLimpar);
+        painel.add(botaoSair);
+
+        janela.add(painel);
+
+        janela.pack();
+        janela.setVisible(true);
+
+        botaoMostrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String texto = campoTexto.getText();   
+
+                JOptionPane.showMessageDialog(null, texto);
+            }
+        });
+
+        botaoLimpar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                campoTexto.setText("");
+            }
+        });
+
+        botaoSair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+}

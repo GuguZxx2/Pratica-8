@@ -1,0 +1,100 @@
+Questão 2:
+Eu sei que tem como ele atualizar de acordo com o horário real porém eu não sei fazer
+
+
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class Relogio {
+    private int hora;
+    private int minuto;
+
+    public Relogio(int hora, int minuto) {
+        this.hora = hora;
+        this.minuto = minuto;
+    }
+
+    public void ticTac() {
+        minuto++;
+        if (minuto == 60) {
+            minuto = 0;
+            hora++;
+            if (hora == 24) {
+                hora = 0;
+            }
+        }
+    }
+
+    public void setHora(int hora) {
+        if (hora >= 0 && hora <= 23) {
+            this.hora = hora;
+        }
+    }
+
+    public void setMinuto(int minuto) {
+        if (minuto >= 0 && minuto <= 59) {
+            this.minuto = minuto;
+        }
+    }
+
+    public   
+ String mostra() {
+        return String.format("%02d:%02d", hora, minuto);
+    }
+}
+
+class Mostrador extends JFrame {
+    private JLabel labelHora;
+    private Relogio relogio;
+
+    public Mostrador(Relogio relogio) {
+        this.relogio = relogio;
+    }
+
+    private void atualizaHora() {
+        labelHora.setText(relogio.mostra());
+    }
+
+}
+
+public class InterfaceRelogio {
+    public static void main(String[] args) {
+        Relogio relogio = new Relogio(12, 0);
+        Mostrador mostrador = new Mostrador(relogio);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+botaoTicTac.addActionListener(e -> {
+    relogio.ticTac();
+    atualizaHora();
+});
+
+botaoHora.addActionListener(e -> {
+    String novaHora = JOptionPane.showInputDialog("Digite a nova hora (0-23):");
+    try {
+        int hora = Integer.parseInt(novaHora);
+        relogio.setHora(hora);
+        atualizaHora();
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(null, "Hora inválida.");
+    }
+});
+
+
+
+
+
+
